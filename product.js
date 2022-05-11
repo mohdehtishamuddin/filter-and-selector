@@ -35,7 +35,7 @@ var products = [{
     "os": "Windows"
 }];
 var shortlist =[]
-var table = `<table>
+var table = `<table id="my">
 <tr>
 <th>ID</th>
 <th>Name</th>
@@ -51,7 +51,7 @@ $("#os").change(()=>{
 $("#brand").change(()=>{
     sorting()
 })
-$("#name").on("keyup",function(){
+$("#myInput").on("keyup",function(){
     search();
 })
 $(document).on("click",".remove",function(){
@@ -67,7 +67,7 @@ function display(){
     var brandval = "";
     var osval
     products.forEach(element =>{
-        list +=`<tr id = "myTable">
+        list +=`<tr>
         <td>${element.id}</td>
         <td>${element.name}</td>
         <td>${element.brand}</td>
@@ -139,18 +139,15 @@ function sorting(){
     }
     
     }
+    
  function search(){
-
-
-$(document).ready(function(){
-    $("#name").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable").filter(function() {
+   
+      var value = $('#myInput').val().toLowerCase();
+      $("#my tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        console.log('hello');
       });
-    });
-  });
-}
+   }
  function sortdisplay(){
        // console.log('display function');
      var list="";
